@@ -28,37 +28,43 @@ class BankAccount:
 
 # Função principal para interagir com o usuário
 def main():
+    #Login inicial
+    registration = ("Carlos")
+    key = ("9292")
+
+    account = BankAccount(registration)
+
+    #Sistema para verificar se login e senha está correto
+    login = input("Login: ")
+    password = input("Password: ")
+
+    if login == registration and password == key:
+        while True:
+            print ("\n ---- Banking System ----")
+            print ("1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit")
 
 
-    account = BankAccount("Anil")
+            choice = input("Choose an option: ")
 
 
-    while True:
-        print ("\n ---- Banking System ----")
-        print ("1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit")
+            if choice == "1":
+                print("\n --- Deposit ---")
+                amount = float(input("Enter amount to deposit: R$"))
+                account.deposit(amount)
+            elif choice == "2":
+                print("\n --- Withdraw ---")
+                amount = float(input("Enter amount to deposit: R$"))
+                account.withdraw(amount)
+            elif choice == "3":
+                print("\n --- Balance ---")
+                account.check_balance()
+            elif choice == "4":
+                print("\nExiting the banking system. Goodbye !\n")
+                break
+            else:
+                print ("\nInvalid option, Please try again!\n")
 
 
-        choice = input("Choose an option: ")
-
-
-        if choice == "1":
-            print("\n --- Deposit ---")
-            amount = float(input("Enter amount to deposit: R$"))
-            account.deposit(amount)
-        elif choice == "2":
-            print("\n --- Withdraw ---")
-            amount = float(input("Enter amount to deposit: R$"))
-            account.withdraw(amount)
-        elif choice == "3":
-            print("\n --- Balance ---")
-            account.check_balance()
-        elif choice == "4":
-            print("\nExiting the banking system. Goodbye !\n")
-            break
-        else:
-            print ("\nInvalid option, Please try again!\n")
-
-#
 if __name__ == "__main__":
     main()
 print (__name__)
