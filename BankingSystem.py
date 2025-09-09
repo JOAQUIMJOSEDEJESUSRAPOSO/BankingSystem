@@ -29,40 +29,48 @@ class BankAccount:
 # Função principal para interagir com o usuário
 def main():
     #Login inicial
+    agency_user = ("000-1")
     registration = ("Carlos")
     key = ("9292")
 
     account = BankAccount(registration)
 
-    #Sistema para verificar se login e senha está correto
-    login = input("Login: ")
-    password = input("Password: ")
+    while True:#Sistema para verificar se login e senha está correto
+        login = input("Login: ")
+        password = input("Password: ")
+        agency = input("Agency: ")
 
-    if login == registration and password == key:
-        while True:
-            print ("\n ---- Banking System ----")
-            print ("1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit")
-
-
-            choice = input("Choose an option: ")
-
-
-            if choice == "1":
-                print("\n --- Deposit ---")
-                amount = float(input("Enter amount to deposit: R$"))
-                account.deposit(amount)
-            elif choice == "2":
-                print("\n --- Withdraw ---")
-                amount = float(input("Enter amount to deposit: R$"))
-                account.withdraw(amount)
-            elif choice == "3":
-                print("\n --- Balance ---")
+        if login == registration and password == key and agency_user == agency:
+            while True:
+                print ("\n ---- Banking System ----")
+                print("=================")
+                print(f"Hello, {registration}!\n Agency: {agency_user}")
                 account.check_balance()
-            elif choice == "4":
-                print("\nExiting the banking system. Goodbye !\n")
-                break
-            else:
-                print ("\nInvalid option, Please try again!\n")
+                print("=================")
+                print (" \n 1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit\n")
+
+
+                choice = input("Choose an option: ")
+
+
+                if choice == "1":
+                    print("\n --- Deposit ---")
+                    amount = float(input("Enter amount to deposit: R$"))
+                    account.deposit(amount)
+                elif choice == "2":
+                    print("\n --- Withdraw ---")
+                    amount = float(input("Enter amount to deposit: R$"))
+                    account.withdraw(amount)
+                elif choice == "3":
+                    print("\n --- Balance ---")
+                    account.check_balance()
+                elif choice == "4":
+                    print("\nExiting the banking system. Goodbye !\n")
+                    break
+                else:
+                    print ("\nInvalid option, Please try again!\n")
+        else:
+            print("Algum dos dados não está correto!")
 
 
 if __name__ == "__main__":
