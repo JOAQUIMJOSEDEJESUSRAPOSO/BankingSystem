@@ -9,7 +9,7 @@ class BankAccount:
     def deposit (self, amount):
         if amount > 0:
             self.balance += amount
-            print (f"Deposite${amount}. Current balance: ${self.balance}")
+            print (f"Deposited ${amount}. Current balance: ${self.balance}")
         else:
             print ("Deposit amount must be positive.")
 
@@ -19,7 +19,7 @@ class BankAccount:
                 self.balance -= amount
                 print (f"Withdrew ${amount}. Current balance: ${self.balance}")
             else:
-                print (f" Insufficient funds. Current balance: ${self.balance}")
+                print (f"Insufficient funds. Current balance: ${self.balance}")
         else:
             print ("Withdraw amount must be positive.")
 
@@ -31,35 +31,35 @@ class BankAccount:
     
     def get_pix(self):
         if self.has_pix():
-            return print (f"\nSua chave Pix é: {self.pix_key}\n")
+            return print (f"\nYour Pix key is: {self.pix_key}\n")
         else:
             print("\nNo Pix key registered.\n")
     
     def set_pix(self, new_key):
         if not new_key or new_key == "":
-            return print ("A chave Pix não pode ser vazia.")
+            return print ("The Pix key cannot be empty.")
         
         if self.has_pix():
             old_key = self.pix_key
             self.pix_key = new_key
-            return print (f"Chave pix alterada de {old_key} para {self.pix_key}")
+            return print (f"Pix key changed from {old_key} to {self.pix_key}")
         else:
             self.pix_key = new_key
-            return print (f"Chave pix cadastrada: {self.pix_key}")
+            return print (f"Registered Pix key: {self.pix_key}")
         
     def verification_pix(self):
         if self.has_pix():
-            return "5. change pix"
+            return "5. Change Pix"
         else:
-            return "5. register pix"
+            return "5. Register Pix"
         
     def set_password(self, new_password):
         if not new_password or new_password == "":
-            return print ("A senha não pode ser vazia!")
+            return print ("Password cannot be empty!")
         else:
             old_password = self.password
             self.password = new_password
-            return print (f"Senha alterada de {old_password} para {self.password}")
+            return print (f"Password changed from {old_password} to {self.password}")
 
 # Função principal para interagir com o usuário
 def main():
@@ -68,7 +68,6 @@ def main():
     registration = ("Carlos")
 
     account = BankAccount(registration)
-
 
     while True:#Sistema para verificar se login e senha está correto
         login = input("Login: ")
@@ -79,13 +78,12 @@ def main():
             while True:
                 print ("\n ---- Banking System ----")
                 print("=================")
-                print(f"Hello, {registration}!\n Agency: {agency_user}")
+                print(f"Hello, {registration}!\nAgency: {agency_user}")
                 account.check_balance()
                 print("=================")
-                print (f" \n 1. Deposit\n2. Withdraw\n3. Check Balance\n4. Consult pix\n{account.verification_pix()}\n6. change password \n7. Exit")
+                print (f" \n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Consult Pix\n{account.verification_pix()}\n6. Change Password \n7. Exit")
 
 
-                choice = input("Choose an option: ")
                 choice = input("Choose an option: ")
 
 
@@ -95,7 +93,7 @@ def main():
                     account.deposit(amount)
                 elif choice == "2":
                     print("\n --- Withdraw ---")
-                    amount = float(input("Enter amount to deposit: R$"))
+                    amount = float(input("Enter amount to withdraw: R$"))
                     account.withdraw(amount)
                 elif choice == "3":
                     print("\n --- Balance ---")
@@ -114,7 +112,7 @@ def main():
                 else:
                     print ("\nInvalid option, Please try again!\n")
         else:
-            print("Algum dos dados não está correto!")
+            print("Some data is not correct!")
 
 
 if __name__ == "__main__":
